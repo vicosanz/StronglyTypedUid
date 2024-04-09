@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "StronglyTypedUid.sln",
+    "projects": [
+      "StronglyTypedUid.Common\\StronglyTypedUid.Common.csproj",
+      "StronglyTypedUid.Generator\\StronglyTypedUid.Generator.csproj",
+      "StronglyTypedUid\\StronglyTypedUid.csproj",
+      "Test\\Test.csproj"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netstandard2.0</TargetFramework>
+	  <IncludeBuildOutput>true</IncludeBuildOutput>
+	  <Nullable>enable</Nullable>
+	  <ImplicitUsings>true</ImplicitUsings>
+	  <LangVersion>Latest</LangVersion>
+	  <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+	  <Description>Implementation of Strongly Typed Ids. Source Generator</Description>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageProjectUrl>https://github.com/vicosanz/StronglyTypedUid</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/vicosanz/StronglyTypedUid</RepositoryUrl>
+	  <Authors>Victor Sanchez</Authors>
+	  <Company>Infoware Soluciones</Company>
+	  <Version>1.0.0</Version>
+	  <PackageReleaseNotes>Implementation of Strongly Typed Ids. Source Generator</PackageReleaseNotes>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
+		<ProjectReference Include="..\StronglyTypedUid.Common\StronglyTypedUid.Common.csproj" PrivateAssets="all" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\StronglyTypedUid.Common.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\StronglyTypedUid.Common.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="true" />
+	</ItemGroup>
+
+</Project>

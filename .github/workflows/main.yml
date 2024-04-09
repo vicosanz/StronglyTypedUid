@@ -1,0 +1,30 @@
+name: publish to nuget
+on:
+  push:
+    branches:
+      - master # Default release branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4.0.0
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build ci.slnf --configuration Release
+  
+      - name: Test
+        run: dotnet test
+
+      - name: Pack
+        run: dotnet pack ci.slnf --include-symbols -property:SymbolPackageFormat=snupkg -property:NuspecFile= --configuration Release --no-build --no-restore --output .
+
+      - name: Push to Nuget
+        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
