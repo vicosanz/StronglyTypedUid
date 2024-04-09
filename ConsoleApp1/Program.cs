@@ -39,7 +39,7 @@ Console.WriteLine(newcustomer2?.Name);
 
 public record Customer(CustomerId Id, string Name);
 
-[StronglyTypedUid(asUlid:true, [EnumAdditionalConverters.EFCore, EnumAdditionalConverters.Dapper, EnumAdditionalConverters.NewtonsoftJson])]
+[StronglyTypedUid(asUlid:true)]
 public readonly partial record struct CustomerId
 {
 }

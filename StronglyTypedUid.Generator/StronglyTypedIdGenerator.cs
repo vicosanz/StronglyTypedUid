@@ -86,9 +86,15 @@ namespace StronglyTypedUid.Generator
                         {
                             var argument = attribute.ConstructorArguments.First();
                             if (bool.TryParse(argument.Value!.ToString(), out bool ulid)) asUlid = ulid;
-
-                            var argument2 = attribute.ConstructorArguments[1];
-                            additionalConverters.AddRange(argument2.Values.Select(x => int.Parse(x.Value!.ToString())));
+                            
+                            if (attribute.ConstructorArguments.Length > 1)
+                            {
+                                var argument2 = attribute.ConstructorArguments[1];
+                                if (!argument2.IsNull)
+                                {
+                                    additionalConverters.AddRange(argument2.Values.Select(x => int.Parse(x.Value!.ToString())));
+                                }
+                            }
                         }
                     }
                 }
