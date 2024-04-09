@@ -65,7 +65,7 @@ namespace StronglyTypedUid.Generator
                     continue;
                 }
 
-                var typelist = new List<string>();
+                var additionalConverters = new List<int>();
                 bool allowNulls = false;
                 bool asUlid = false;
                 string modifiers = type.GetModifiers();
@@ -86,6 +86,9 @@ namespace StronglyTypedUid.Generator
                         {
                             var argument = attribute.ConstructorArguments.First();
                             if (bool.TryParse(argument.Value!.ToString(), out bool ulid)) asUlid = ulid;
+
+                            var argument2 = attribute.ConstructorArguments[1];
+                            additionalConverters.AddRange(argument2.Values.Select(x => int.Parse(x.Value!.ToString())));
                         }
                     }
                 }
@@ -97,7 +100,8 @@ namespace StronglyTypedUid.Generator
                                         typeSymbol.GetNameTyped(),
                                         typeSymbol.ToString(),
                                         modifiers,
-                                        asUlid));
+                                        asUlid,
+                                        additionalConverters));
             }
             return stronglyTypeds;
         }

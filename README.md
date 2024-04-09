@@ -28,6 +28,13 @@ If you want change to Ulid
     public readonly partial record struct CustomerId { }
 ```
 
+Create additional converters to popular packages like efcore, dapper and newtonsoftjson
+
+```csharp
+    [StronglyTypedUid(asUlid:true, [EnumAdditionalConverters.EFCore, EnumAdditionalConverters.Dapper, EnumAdditionalConverters.NewtonsoftJson])]
+    public readonly partial record struct CustomerId { }
+```
+
 The generator will create a partial record struct of the same name
 
 ```csharp

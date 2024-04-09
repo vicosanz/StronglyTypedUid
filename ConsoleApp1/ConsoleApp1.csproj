@@ -8,10 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StronglyTypedUid\StronglyTypedUid.csproj" />
 	  <ProjectReference Include="..\StronglyTypedUid.Common\StronglyTypedUid.Common.csproj" />
-	  <ProjectReference Include="..\StronglyTypedUid.Generator\StronglyTypedUid.Generator.csproj"
-						OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	  <ProjectReference Include="..\StronglyTypedUid.Generator\StronglyTypedUid.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

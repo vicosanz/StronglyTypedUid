@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StronglyTypedUid;
 
 
@@ -38,7 +39,8 @@ Console.WriteLine(newcustomer2?.Name);
 
 public record Customer(CustomerId Id, string Name);
 
-[StronglyTypedUid(asUlid:false)]
+[StronglyTypedUid(asUlid:true, [EnumAdditionalConverters.EFCore, EnumAdditionalConverters.Dapper, EnumAdditionalConverters.NewtonsoftJson])]
 public readonly partial record struct CustomerId
 {
 }
+

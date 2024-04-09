@@ -13,9 +13,10 @@ namespace StronglyTypedUid.Generator
     /// <param name="FullName"> The full name of the base struct </param>
     /// <param name="Modifiers"> All modifiers of the base struct e.g. public readonly </param>
     /// <param name="AsUlid"> Use Ulids instead of Guid </param>
+    /// <param name="AdditionalConverters"> Array of additional converters </param>
     public record Metadata(string Namespace, IReadOnlyList<string> Usings,
         bool AllowNulls, string Name, string NameTyped, string FullName, string Modifiers,
-        bool AsUlid)
+        bool AsUlid, IReadOnlyList<int> AdditionalConverters)
     {
         /// <summary>
         /// The namespace found in the base struct
@@ -56,6 +57,7 @@ namespace StronglyTypedUid.Generator
         /// All types of the StronglyTypedUid configured
         /// </summary>
         public bool AsUlid { get; internal set; } = AsUlid;
+        public IReadOnlyList<int> AdditionalConverters { get; internal set; } = AdditionalConverters;
 
         public string UidType => AsUlid ? "Ulid" : "Guid";
         public int UidBufferSize => AsUlid ? 26 : 36;

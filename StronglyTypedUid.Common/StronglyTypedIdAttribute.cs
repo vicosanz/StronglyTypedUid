@@ -6,7 +6,12 @@ namespace StronglyTypedUid;
 public class StronglyTypedUidAttribute : Attribute
 {
     public StronglyTypedUidAttribute() { }
-    public StronglyTypedUidAttribute(bool asUlid = true) => AsUlid = asUlid;
+    public StronglyTypedUidAttribute(bool asUlid = true, EnumAdditionalConverters[] converters = null)
+    {
+        AsUlid = asUlid;
+        Converters = converters ?? [];
+    }
 
     public bool AsUlid { get; }
+    public EnumAdditionalConverters[] Converters { get; }
 }
